@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scheduleris-backend-deployment
+spec:
+  selector:
+    matchLabels:
+      app: scheduleris-backend-pod
+  template:
+    metadata:
+      labels:
+        app: scheduleris-backend-pod
+    spec:
+      containers:
+      - name: scheduleris-backend-container
+        image: scheduleris-backend:v4
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
